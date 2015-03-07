@@ -1,4 +1,39 @@
 require 'minitest_helper'
+require 'active_model'
 
-class TestActiveModelEmailAddressValidator < MiniTest::Unit::TestCase
+# Create a class we can validate with
+class WithEmail
+  include ActiveModel::Validations
+  attr_accessor :email
+  validates :email, :email_address => true, :allow_nil => true
+end
+
+class EmailAddressValidatorTest < MiniTest::Test
+  def setup
+    @subject = WithEmail.new
+  end
+
+  def test_accepts_nil_email_address
+    accept(nil)
+  end
+
+  def test_accepts_common_email_address_format
+    accept("bob@example.com")
+  end
+
+  def test_rejects_email_address_without_at_sign
+    reject("bobexample.com")
+  end
+
+  private
+
+  def accept(email_address)
+    @subject.email = email_address
+    assert @subject.valid?, "Expected #{email_address.inspect} to be valid"
+  end
+
+  def reject(email_address)
+    @subject.email = email_address
+    assert !@subject.valid?, "Expected #{email_address.inspect} to be invalid"
+  end
 end
