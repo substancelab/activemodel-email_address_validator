@@ -14,6 +14,12 @@ class WorkEmail
   validates :work_email, :email_address => true
 end
 
+class WithCustomRegex
+  include ActiveModel::Validations
+  attr_accessor :email
+  validates :email, :email_address => {:format => /.+@enterprise\..+/}
+end
+
 class EmailAddressValidatorTest < MiniTest::Test
   def setup
     @subject = WithEmail.new
@@ -37,6 +43,14 @@ class EmailAddressValidatorTest < MiniTest::Test
     subject.valid?
     assert subject.errors[:email].empty?
     assert !subject.errors[:work_email].empty?
+  end
+
+  def test_validates_with_custom_regular_expression
+    subject = WithCustomRegex.new
+    subject.email = "whatever@enterprise.museum"
+    assert subject.valid?
+    subject.email = "totally@valid.com"
+    assert !subject.valid?
   end
 
   private
