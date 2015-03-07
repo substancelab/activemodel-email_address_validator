@@ -9,8 +9,7 @@ module ActiveModelEmailAddressValidator
     end
 
     def valid?(regex = DEFAULT_VALID_EMAIL_PATTERN)
-      return false if address.nil?
-      address =~ regex
+      address.to_s =~ regex
     end
 
     private
