@@ -8,6 +8,12 @@ class WithEmail
   validates :email, :email_address => true, :allow_nil => true
 end
 
+class WorkEmail
+  include ActiveModel::Validations
+  attr_accessor :work_email
+  validates :work_email, :email_address => true
+end
+
 class EmailAddressValidatorTest < MiniTest::Test
   def setup
     @subject = WithEmail.new
@@ -23,6 +29,14 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_rejects_invalid_email_address
     reject("bobexample.com")
+  end
+
+  def test_adds_errors_to_validated_attribute
+    subject = WorkEmail.new
+    subject.work_email = "whatever"
+    subject.valid?
+    assert subject.errors[:email].empty?
+    assert !subject.errors[:work_email].empty?
   end
 
   private
