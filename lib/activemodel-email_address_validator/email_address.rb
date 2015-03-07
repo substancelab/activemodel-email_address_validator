@@ -10,14 +10,7 @@ module ActiveModelEmailAddressValidator
 
     def valid?
       return false if address.nil?
-
-      email_parts = address.split("@")
-      return false unless email_parts.size == 2
-
-      user, host = *email_parts
-      return false unless user =~ /^([^.]+\S)*[^.]+$/
-      return false unless host =~ /^([^(\,|.) ]+\.)+[^(\,|.) ]+$/
-      return true
+      address =~ DEFAULT_VALID_EMAIL_PATTERN
     end
 
     private

@@ -9,6 +9,14 @@ class EmailAddressTest < MiniTest::Test
     reject("bobexample.com")
   end
 
+  def test_rejects_blank_string
+    reject("")
+  end
+
+  def test_rejects_empty_string
+    reject("   ")
+  end
+
   def test_accepts_hostname_with_dashes
     accept("my@do-main.com")
   end
