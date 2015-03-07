@@ -1,25 +1,10 @@
 require "active_model/validator"
+require "activemodel-email_address_validator/email_address"
 
 class EmailAddressValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
-    email_parts = value.split("@")
-
-    unless email_parts.size == 2
-      invalidate(record, attribute)
-      return
-    end
-
-    user, host = *email_parts
-
-    unless user =~ /^([^.]+\S)*[^.]+$/
-      invalidate(record, attribute)
-      return
-    end
-
-    unless host =~ /^([^(\,|.) ]+\.)+[^(\,|.) ]+$/
-      invalidate(record, attribute)
-      return
-    end
+    address = ActiveModelEmailAddressValidator::EmailAddress.new(value)
+    invalidate(record, attribute) unless address.valid?
   end
 
   private
