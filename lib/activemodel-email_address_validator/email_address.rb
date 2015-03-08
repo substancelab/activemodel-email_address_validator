@@ -1,11 +1,11 @@
 module ActiveModelEmailAddressValidator
   class EmailAddress
     def initialize(address)
-      @address = address
+      @address = address.to_s
     end
 
     def to_s
-      address.to_s
+      address
     end
 
     def valid?(regex = nil)

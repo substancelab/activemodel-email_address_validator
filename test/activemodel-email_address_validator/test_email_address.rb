@@ -9,6 +9,10 @@ class EmailAddressTest < MiniTest::Test
     reject("bobexample.com")
   end
 
+  def test_rejects_nil
+    reject(nil)
+  end
+
   def test_rejects_blank_string
     reject("")
   end
