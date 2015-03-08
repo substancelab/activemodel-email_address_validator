@@ -1,6 +1,8 @@
 # Email Address Validator
 ## ActiveModel-style email address format validator
 
+[![Build Status](https://travis-ci.org/substancelab/activemodel-email_address_validator.svg?branch=master)](https://travis-ci.org/substancelab/activemodel-email_address_validator) [![Code Climate](https://codeclimate.com/github/substancelab/activemodel-email_address_validator/badges/gpa.svg)](https://codeclimate.com/github/substancelab/activemodel-email_address_validator)
+
 Whenever I have wanted to validate an email address it has been because I wanted to be somewhat certain I can send an email to someone. Usually this happens as part of a signup procedure.
 
 At this point I have pretty much one criteria:
