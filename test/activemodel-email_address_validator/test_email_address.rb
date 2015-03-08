@@ -33,6 +33,18 @@ class EmailAddressTest < MiniTest::Test
     accept("my@secure.email.domain.name")
   end
 
+  def test_accepts_local_part_with_dashes
+    accept("super-bob@example.com")
+  end
+
+  def test_accepts_local_part_with_period
+    accept("super.bob@example.com")
+  end
+
+  def test_accepts_local_part_with_plus
+    accept("super+bob@example.com")
+  end
+
   def test_rejects_local_part_starting_with_dot
     reject(".my@domain.com")
   end
