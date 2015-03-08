@@ -4,7 +4,7 @@ require "activemodel-email_address_validator/email_address"
 class EmailAddressValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     address = ActiveModelEmailAddressValidator::EmailAddress.new(value)
-    regex = options.fetch(:format) { ActiveModelEmailAddressValidator::DEFAULT_VALID_EMAIL_PATTERN }
+    regex = options[:format]
     invalidate(record, attribute) unless address.valid?(regex)
   end
 
