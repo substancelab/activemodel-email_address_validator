@@ -1,31 +1,30 @@
 require 'minitest_helper'
 require 'active_model'
 
-# Create a class we can validate with
-class WithEmail
-  include ActiveModel::Validations
-  attr_accessor :email
-  validates :email, :email_address => true, :allow_nil => true
-end
+def build_model_with_validations(validations = {:email => {:email_address => true}})
+  klass = Class.new do
+    include ActiveModel::Validations
+    def self.model_name
+      ActiveModel::Name.new(self, nil, "ValidatorModel")
+    end
 
-class WorkEmail
-  include ActiveModel::Validations
-  attr_accessor :work_email
-  validates :work_email, :email_address => true
-end
-
-class WithCustomRegex
-  include ActiveModel::Validations
-  attr_accessor :email
-  validates :email, :email_address => {:format => /.+@enterprise\..+/}
+    validations.each do |attribute, options|
+      attr_accessor attribute
+      validates attribute, options
+    end
+  end
+  klass.new
 end
 
 class EmailAddressValidatorTest < MiniTest::Test
   def setup
-    @subject = WithEmail.new
+    @subject = build_model_with_validations
   end
 
   def test_accepts_nil_email_address
+    @subject = build_model_with_validations(
+      :email => {:email_address => true, :allow_nil => true}
+    )
     accept(nil)
   end
 
@@ -38,7 +37,9 @@ class EmailAddressValidatorTest < MiniTest::Test
   end
 
   def test_adds_errors_to_validated_attribute
-    subject = WorkEmail.new
+    subject = build_model_with_validations(
+      :work_email => {:email_address => true}
+    )
     subject.work_email = "whatever"
     subject.valid?
     assert subject.errors[:email].empty?
@@ -46,7 +47,9 @@ class EmailAddressValidatorTest < MiniTest::Test
   end
 
   def test_validates_with_custom_regular_expression
-    subject = WithCustomRegex.new
+    subject = build_model_with_validations(
+      :email => {:email_address => {:format => /.+@enterprise\..+/}}
+    )
     subject.email = "whatever@enterprise.museum"
     assert subject.valid?
     subject.email = "totally@valid.com"
