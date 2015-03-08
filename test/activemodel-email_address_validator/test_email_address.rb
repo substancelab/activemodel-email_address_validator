@@ -37,6 +37,10 @@ class EmailAddressTest < MiniTest::Test
     reject(".my@domain.com")
   end
 
+  def test_rejects_local_part_with_spaces
+    reject("f oo @domain.com")
+  end
+
   def test_rejects_local_part_ending_with_dot
     reject("my.@domain.com")
   end
