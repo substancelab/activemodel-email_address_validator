@@ -25,6 +25,7 @@ module ActiveModelEmailAddressValidator
     end
 
     def valid_using_default?
+      return false if address =~ /\s+/
       email_parts = address.split('@')
 
       return false unless email_parts.size == 2
