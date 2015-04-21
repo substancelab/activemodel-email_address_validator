@@ -9,6 +9,10 @@ class EmailAddressTest < MiniTest::Test
     reject("bobexample.com")
   end
 
+  def test_rejects_any_space
+    reject("John. Doe. somewhere@gmail.com")
+  end
+
   def test_rejects_nil
     reject(nil)
   end
