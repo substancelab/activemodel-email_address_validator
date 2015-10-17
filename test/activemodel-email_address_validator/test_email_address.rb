@@ -1,4 +1,4 @@
-require 'minitest_helper'
+require "minitest_helper"
 
 class EmailAddressValidTest < MiniTest::Test
   def test_accepts_common_email_address_format

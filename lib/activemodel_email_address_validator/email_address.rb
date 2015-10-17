@@ -26,14 +26,14 @@ module ActiveModelEmailAddressValidator
 
     def valid_using_default?
       return false if address =~ /\s+/
-      email_parts = address.split('@')
+      email_parts = address.split("@")
 
       return false unless email_parts.size == 2
 
       user, host = *email_parts
       return false unless user =~ /^([^.]+\S)*[^. ]+$/
       return false unless host =~ /^([^,. ]+\.)+[^,. ]+$/
-      return true
+      true
     end
   end
 end

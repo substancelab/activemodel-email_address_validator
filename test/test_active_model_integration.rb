@@ -1,5 +1,5 @@
-require 'minitest_helper'
-require 'active_model'
+require "minitest_helper"
+require "active_model"
 
 def build_model_with_validations(validations = {:email => {:email_address => true}})
   klass = Class.new do
