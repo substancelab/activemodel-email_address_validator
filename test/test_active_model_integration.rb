@@ -1,7 +1,8 @@
 require "minitest_helper"
 require "active_model"
 
-def build_model_with_validations(validations = {:email => {:email_address => true}})
+SIMPLEST_VALIDATION = {:email => {:email_address => true}}
+def build_model_with_validations(validations = SIMPLEST_VALIDATION)
   klass = Class.new do
     include ActiveModel::Validations
     def self.model_name
