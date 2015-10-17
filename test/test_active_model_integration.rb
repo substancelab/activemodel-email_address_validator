@@ -1,6 +1,7 @@
 require "minitest_helper"
 require "active_model"
 
+# rubocop:disable Metrics/MethodLength
 SIMPLEST_VALIDATION = {:email => {:email_address => true}}
 def build_model_with_validations(validations = SIMPLEST_VALIDATION)
   klass = Class.new do
@@ -16,6 +17,7 @@ def build_model_with_validations(validations = SIMPLEST_VALIDATION)
   end
   klass.new
 end
+# rubocop:enable Metrics/MethodLength
 
 class EmailAddressValidatorTest < MiniTest::Test
   def setup
