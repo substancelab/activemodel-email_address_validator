@@ -108,13 +108,13 @@ class EmailAddressValidTest < MiniTest::Test
   private
 
   def accept(email_address)
-    @subject = ActiveModelEmailAddressValidator::EmailAddress.new(email_address)
-    assert @subject.valid?, "Expected #{email_address} to be valid"
+    subject = ActiveModelEmailAddressValidator::EmailAddress.new(email_address)
+    assert subject.valid?, "Expected #{email_address} to be valid"
   end
 
   def reject(email_address)
-    @subject = ActiveModelEmailAddressValidator::EmailAddress.new(email_address)
-    assert !@subject.valid?, "Expected #{email_address} to be invalid"
+    subject = ActiveModelEmailAddressValidator::EmailAddress.new(email_address)
+    assert !subject.valid?, "Expected #{email_address} to be invalid"
   end
 end
 
