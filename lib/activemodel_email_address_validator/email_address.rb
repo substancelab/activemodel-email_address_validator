@@ -32,7 +32,7 @@ module ActiveModelEmailAddressValidator
 
       user, host = *email_parts
       return false unless user =~ /^([^.]+\S)*[^. ]+$/
-      return false unless host =~ /^([^,. ]+\.)+[^,. ]+$/
+      return false unless host =~ /^([^,. ~]+\.)+[^,. ]+$/
       true
     end
   end
