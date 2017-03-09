@@ -101,6 +101,10 @@ class EmailAddressValidTest < MiniTest::Test
     reject("my@domain.com,")
   end
 
+  def test_rejects_tildes_in_hostname
+    reject("my@~domain.com")
+  end
+
   def test_handles_long_failing_strings
     reject("fernandeztorralbofrancisco@sabadellatlantico.")
   end
