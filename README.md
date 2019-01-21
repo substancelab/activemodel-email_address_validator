@@ -28,6 +28,14 @@ If you want to use a specific regular expression:
 
     validates :email, :email_address => {:format => /.+@.+\..+/}
 
+### Bring your own logic
+
+If a regular expression isn't enough for you, you can include your own rules for email addresses. For example, you could validate that all email adresses belong to the same company:
+
+    validates :email, :email_address => {
+      :with => proc { |address| address.end_with?("@substancelab.com") }
+    }
+
 ### Verify domain (still to be done - pull request, anybody?)
 
 This also checks that the domain actually has an MX record. Note this might take a while because of DNS lookups.
