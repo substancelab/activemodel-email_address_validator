@@ -5,6 +5,13 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## Unreleased
+
+### Added
+
+- Support for Ruby 2.5, 2.5 and 2.6. We've probably always had the support,
+  but now we're actually testing it.
+
 ## [1.0.1]
 
 ### Added
