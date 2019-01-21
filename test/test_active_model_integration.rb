@@ -10,15 +10,15 @@ class EmailAddressValidatorTest < MiniTest::Test
     @subject = build_model_with_validations(
       :email => {:email_address => true, :allow_nil => true}
     )
-    accept(nil)
+    accept(nil, @subject)
   end
 
   def test_accepts_valid_email_address
-    accept("bob@example.com")
+    accept("bob@example.com", @subject)
   end
 
   def test_rejects_invalid_email_address
-    reject("bobexample.com")
+    reject("bobexample.com", @subject)
   end
 
   def test_adds_errors_to_validated_attribute
@@ -35,21 +35,50 @@ class EmailAddressValidatorTest < MiniTest::Test
     subject = build_model_with_validations(
       :email => {:email_address => {:format => /.+@enterprise\..+/}}
     )
-    subject.email = "whatever@enterprise.museum"
-    assert subject.valid?
-    subject.email = "totally@valid.com"
-    assert !subject.valid?
+    accept("whatever@enterprise.museum", subject)
+    reject("totally@valid.com", subject)
+  end
+
+  def test_validates_with_custom_regular_as_a_rule
+    subject = build_model_with_validations(
+      :email => {:email_address => {:with => /.+@enterprise\..+/}}
+    )
+    accept("whatever@enterprise.museum", subject)
+    reject("totally@valid.com", subject)
+  end
+
+  def test_validates_with_proc
+    subject = build_model_with_validations(
+      :email => {:email_address => {
+        :with => proc { |address| address == "foo" }}
+      }
+    )
+    accept("foo", subject)
+    reject("foo@bar.com", subject)
+  end
+
+  def test_validates_with_multiple_procs
+    subject = build_model_with_validations(
+      :email => {:email_address => {
+        :with => [
+          proc { |address| address == "ada" },
+          proc { |address| address.reverse == address }
+        ]}
+      }
+    )
+    accept("ada", subject)
+    reject("bob", subject)
   end
 
   private
 
-  def accept(email_address)
-    @subject.email = email_address
-    assert @subject.valid?, "Expected #{email_address.inspect} to be valid"
+  def accept(email_address, subject)
+    subject.email = email_address
+    assert subject.valid?, "Expected #{email_address.inspect} to be valid"
   end
 
-  def reject(email_address)
-    @subject.email = email_address
-    assert !@subject.valid?, "Expected #{email_address.inspect} to be invalid"
+  def reject(email_address, subject)
+    subject.email = email_address
+    assert !subject.valid?, "Expected #{email_address.inspect} to be invalid"
   end
 end
