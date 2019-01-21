@@ -64,6 +64,7 @@ Or install it yourself as:
 * https://github.com/codyrobbins/active-model-email-validator
 * https://github.com/franckverrot/activevalidators
 * https://github.com/hallelujah/valid_email
+* https://github.com/micke/valid_email2
 * https://github.com/validates-email-format-of/validates_email_format_of
 
 ### Clientside
