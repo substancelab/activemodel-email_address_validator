@@ -4,15 +4,12 @@ require "activemodel_email_address_validator/email_address"
 class EmailAddressValidator < ActiveModel::EachValidator
   def validate_each(record, attribute, value)
     rules = Array(options[:with] || [])
-    if rules.any?
-      # We are using the new syntax with support for multiple validations
-      invalidate(record, attribute) unless all_rules_pass?(rules, value)
-    else
+    if rules.empty?
       # We are using the old syntax, assume regular expressions
-      address = ActiveModelEmailAddressValidator::EmailAddress.new(value)
-      regex = options[:format]
-      invalidate(record, attribute) unless address.valid?(regex)
+      rules = [build_rule_from_format(options[:format])]
     end
+
+    invalidate(record, attribute) unless all_rules_pass?(rules, value)
   end
 
   private
@@ -35,6 +32,14 @@ class EmailAddressValidator < ActiveModel::EachValidator
     else
       rule
     end
+  end
+
+  def build_rule_from_format(format)
+    proc { |attribute_value|
+      address =
+        ActiveModelEmailAddressValidator::EmailAddress.new(attribute_value)
+      address.valid?(format)
+    }
   end
 
   def invalidate(record, attribute)
