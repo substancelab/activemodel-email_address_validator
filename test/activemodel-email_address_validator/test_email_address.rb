@@ -5,6 +5,10 @@ class EmailAddressValidTest < MiniTest::Test
     accept("bob@example.com")
   end
 
+  def test_accepts_non_us_ascii_in_local_part
+    accept("bøb@example.com")
+  end
+
   def test_rejects_email_address_without_at_sign
     reject("bobexample.com")
   end
