@@ -15,6 +15,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Support for Ruby 2.5, 2.5 and 2.6. We've probably always had the support,
   but now we're actually testing it.
 
+- Support for ActiveModel 6.
+
 ### Removed
 
 - Support for Ruby 2.2 and 2.3 that are both EOL. We probably still support
