@@ -9,7 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--
+- Support for Ruby 3.0. We've also started testing against Ruby 3.1 to be
+  prepared.
 
 ### Removed
 
