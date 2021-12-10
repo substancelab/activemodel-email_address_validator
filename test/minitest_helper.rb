@@ -7,9 +7,8 @@ require "activemodel-email_address_validator"
 require "minitest/autorun"
 require "minitest/spec"
 
-SIMPLEST_VALIDATION = {:email => {:email_address => true}}
+SIMPLEST_VALIDATION = {email: {email_address: true}}
 
-# rubocop:disable Metrics/MethodLength
 def build_model_with_validations(validations = SIMPLEST_VALIDATION)
   klass = Class.new do
     include ActiveModel::Validations

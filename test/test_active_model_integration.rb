@@ -8,7 +8,7 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_accepts_nil_email_address
     @subject = build_model_with_validations(
-      :email => {:email_address => true, :allow_nil => true}
+      email: {email_address: true, allow_nil: true}
     )
     accept(nil, @subject)
   end
@@ -23,7 +23,7 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_adds_errors_to_validated_attribute
     subject = build_model_with_validations(
-      :work_email => {:email_address => true}
+      work_email: {email_address: true}
     )
     subject.work_email = "whatever"
     subject.valid?
@@ -33,7 +33,7 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_validates_with_custom_regular_expression
     subject = build_model_with_validations(
-      :email => {:email_address => {:format => /.+@enterprise\..+/}}
+      email: {email_address: {format: /.+@enterprise\..+/}}
     )
     accept("whatever@enterprise.museum", subject)
     reject("totally@valid.com", subject)
@@ -41,7 +41,7 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_validates_with_custom_regular_as_a_rule
     subject = build_model_with_validations(
-      :email => {:email_address => {:with => /.+@enterprise\..+/}}
+      email: {email_address: {with: /.+@enterprise\..+/}}
     )
     accept("whatever@enterprise.museum", subject)
     reject("totally@valid.com", subject)
@@ -49,9 +49,9 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_validates_with_proc
     subject = build_model_with_validations(
-      :email => {:email_address => {
-        :with => proc { |address| address == "foo" }}
-      }
+      email: {email_address: {
+        with: proc { |address| address == "foo" }
+      }}
     )
     accept("foo", subject)
     reject("foo@bar.com", subject)
@@ -59,12 +59,12 @@ class EmailAddressValidatorTest < MiniTest::Test
 
   def test_validates_with_multiple_procs
     subject = build_model_with_validations(
-      :email => {:email_address => {
-        :with => [
+      email: {email_address: {
+        with: [
           proc { |address| address == "ada" },
           proc { |address| address.reverse == address }
-        ]}
-      }
+        ]
+      }}
     )
     accept("ada", subject)
     reject("bob", subject)
