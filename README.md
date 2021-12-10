@@ -1,7 +1,7 @@
 # Email Address Validator
 ## ActiveModel-style email address format validator
 
-[![Build Status](https://travis-ci.org/substancelab/activemodel-email_address_validator.svg?branch=master)](https://travis-ci.org/substancelab/activemodel-email_address_validator) [![Code Climate](https://codeclimate.com/github/substancelab/activemodel-email_address_validator/badges/gpa.svg)](https://codeclimate.com/github/substancelab/activemodel-email_address_validator) [![Coverage Status](https://coveralls.io/repos/substancelab/activemodel-email_address_validator/badge.svg?branch=more-badges&service=github)](https://coveralls.io/github/substancelab/activemodel-email_address_validator?branch=more-badges)
+[![Build Status](https://travis-ci.org/substancelab/activemodel-email_address_validator.svg?branch=main)](https://travis-ci.org/substancelab/activemodel-email_address_validator) [![Code Climate](https://codeclimate.com/github/substancelab/activemodel-email_address_validator/badges/gpa.svg)](https://codeclimate.com/github/substancelab/activemodel-email_address_validator) [![Coverage Status](https://coveralls.io/repos/substancelab/activemodel-email_address_validator/badge.svg?branch=more-badges&service=github)](https://coveralls.io/github/substancelab/activemodel-email_address_validator?branch=more-badges)
 
 Whenever I have wanted to validate an email address it has been because I wanted to be somewhat certain I can send an email to someone. Usually this happens as part of a signup procedure.
 
