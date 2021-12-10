@@ -101,6 +101,14 @@ class EmailAddressValidTest < MiniTest::Test
     reject("my@nice@domain.com")
   end
 
+  def test_rejects_leading_at_signs
+    reject("@my@domain.com")
+  end
+
+  def test_rejects_trailing_at_signs
+    reject("my@domain.com@")
+  end
+
   def test_rejects_commas_in_hostname
     reject("my@domain.com,")
   end
