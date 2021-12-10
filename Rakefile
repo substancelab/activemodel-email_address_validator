@@ -6,7 +6,7 @@ Rake::TestTask.new(:test) do |t|
   t.libs << "test"
 end
 
-task :default => :test
+task default: :test
 
 desc "Launch an IRB console with the gem loaded"
 task :console do
