@@ -25,6 +25,7 @@ module ActiveModelEmailAddressValidator
     end
 
     def valid_user?(user)
+      return false if /["']/.match?(user)
       /^([^.<>]+\S)*[^.<> ]+$/.match?(user)
     end
 

@@ -129,6 +129,11 @@ class EmailAddressValidTest < MiniTest::Test
     reject("email_<script></script>_123@example.co.in")
   end
 
+  def test_rejects_username_with_quotation_mark
+    reject('email"123@example.com')
+    reject("email'123@example.com")
+  end
+
   private
 
   def accept(email_address)
