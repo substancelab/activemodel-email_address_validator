@@ -131,7 +131,9 @@ class EmailAddressValidTest < MiniTest::Test
 
   def test_rejects_username_with_quotation_mark
     reject('email"123@example.com')
+    reject('email123@exa"mple.com')
     reject("email'123@example.com")
+    reject("email123@exa'mple.com")
   end
 
   private
