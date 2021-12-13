@@ -125,6 +125,10 @@ class EmailAddressValidTest < MiniTest::Test
     reject("email@123.123.12.123")
   end
 
+  def test_rejects_script_injection
+    reject("email_<script></script>_123@example.co.in")
+  end
+
   private
 
   def accept(email_address)
