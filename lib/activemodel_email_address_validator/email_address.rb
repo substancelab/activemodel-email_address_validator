@@ -20,6 +20,14 @@ module ActiveModelEmailAddressValidator
 
     attr_reader :address
 
+    def valid_host?(host)
+      /^([^,. ~]+\.)+[^,. ]+$/.match?(host)
+    end
+
+    def valid_user?(user)
+      /^([^.]+\S)*[^. ]+$/.match?(user)
+    end
+
     def valid_using_regex?(regex)
       address.to_s =~ regex
     end
@@ -31,9 +39,7 @@ module ActiveModelEmailAddressValidator
       return false unless email_parts.size == 2
 
       user, host = *email_parts
-      return false unless /^([^.]+\S)*[^. ]+$/.match?(user)
-      return false unless /^([^,. ~]+\.)+[^,. ]+$/.match?(host)
-      true
+      valid_user?(user) && valid_host?(host)
     end
   end
 end
