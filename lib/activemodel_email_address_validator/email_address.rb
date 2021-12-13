@@ -21,7 +21,7 @@ module ActiveModelEmailAddressValidator
     attr_reader :address
 
     def valid_host?(host)
-      /^([^,. ~]+\.)+[^,. ]+$/.match?(host)
+      /^([^,. ~]+\.)+[a-z]+$/.match?(host)
     end
 
     def valid_user?(user)

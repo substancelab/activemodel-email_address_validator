@@ -121,6 +121,10 @@ class EmailAddressValidTest < MiniTest::Test
     reject("fernandeztorralbofrancisco@sabadellatlantico.")
   end
 
+  def test_rejects_ip_addresses
+    reject("email@123.123.12.123")
+  end
+
   private
 
   def accept(email_address)
