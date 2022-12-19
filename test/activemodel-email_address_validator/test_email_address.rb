@@ -113,6 +113,10 @@ class EmailAddressValidTest < MiniTest::Test
     reject("my@domain.com,")
   end
 
+  def test_rejects_commas_in_username
+    reject("foo,bar@domain.com")
+  end
+
   def test_rejects_tildes_in_hostname
     reject("my@~domain.com")
   end
