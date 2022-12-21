@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
--
+- Commas are no longer allowed anywhere in an email address. Thanks @prognostikos!
 
 ### Removed
 
