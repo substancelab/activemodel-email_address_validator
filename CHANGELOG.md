@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Unreleased
+## [2.1.1]
 
 ### Added
 
@@ -13,12 +13,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 - Support for Ruby 3.1 and 3.2.
 
-- Commas are no longer allowed anywhere in an email address. Thanks @prognostikos!
-
-### Removed
-
--
-
+- Commas are no longer allowed anywhere in an email address. Thanks
+  @prognostikos!
 
 ## [2.1.0]
 
