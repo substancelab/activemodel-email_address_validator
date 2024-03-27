@@ -140,6 +140,10 @@ class EmailAddressValidTest < MiniTest::Test
     reject("email123@exa'mple.com")
   end
 
+  def test_rejects_unmailable_usernames
+    reject("abdalah291]79@example.com")
+  end
+
   private
 
   def accept(email_address)
