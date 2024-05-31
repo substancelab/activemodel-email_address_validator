@@ -1,6 +1,6 @@
 require "minitest_helper"
 
-class EmailAddressValidTest < MiniTest::Test
+class EmailAddressValidTest < Minitest::Test
   def test_accepts_common_email_address_format
     accept("bob@example.com")
   end
@@ -153,7 +153,7 @@ class EmailAddressValidTest < MiniTest::Test
   end
 end
 
-class EmailAddressTest < MiniTest::Test
+class EmailAddressTest < Minitest::Test
   def test_to_s_uses_address
     email_address = ActiveModelEmailAddressValidator::EmailAddress.new(
       "bob@example.com"
