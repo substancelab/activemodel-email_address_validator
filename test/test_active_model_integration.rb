@@ -1,7 +1,7 @@
 require "minitest_helper"
 require "active_model"
 
-class EmailAddressValidatorTest < MiniTest::Test
+class EmailAddressValidatorTest < Minitest::Test
   def setup
     @subject = build_model_with_validations
   end
