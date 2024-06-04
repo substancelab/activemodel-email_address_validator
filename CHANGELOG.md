@@ -15,6 +15,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 -
 
+## [2.2.0]
+
+### Added
+
+- Support for Ruby 3.3 and 3.4 (no changes).
+
+### Removed
+
+-
+
 ## [2.1.1]
 
 ### Added
