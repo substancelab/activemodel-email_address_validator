@@ -31,15 +31,14 @@ class EmailAddressValidatorTest < Minitest::Test
     assert !subject.errors[:work_email].empty?
   end
 
-  def test_validates_with_custom_regular_expression
+  def test_fails_when_using_deprecated_format_option
     subject = build_model_with_validations(
       email: {email_address: {format: /.+@enterprise\..+/}}
     )
-    accept("whatever@enterprise.museum", subject)
-    reject("totally@valid.com", subject)
+    assert_raises(ArgumentError) { subject.valid? }
   end
 
-  def test_validates_with_custom_regular_as_a_rule
+  def test_validates_with_custom_regular_expression_as_a_rule
     subject = build_model_with_validations(
       email: {email_address: {with: /.+@enterprise\..+/}}
     )

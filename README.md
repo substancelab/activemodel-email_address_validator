@@ -22,15 +22,13 @@ Quite frankly, I don't care about the RFC at this point, neither does the user. 
 
     validates :email, :email_address => true
 
-### Bring your own regex
-
-If you want to use a specific regular expression:
-
-    validates :email, :email_address => {:format => /.+@.+\..+/}
-
 ### Bring your own logic
 
-If a regular expression isn't enough for you, you can include your own rules for email addresses. For example, you could validate that all email adresses belong to the same company:
+If the default behavior isn't enough for you, you can include a custom rule for email addresses. For example to match the email addresses against a regular expression:
+
+    validates :email, :email_address => {:with => /.+@.+\..+/}
+
+Or you could go beyound simple matching and validate that all email adresses belong to the same company:
 
     validates :email, :email_address => {
       :with => proc { |address| address.end_with?("@substancelab.com") }
