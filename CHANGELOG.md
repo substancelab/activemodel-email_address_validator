@@ -25,6 +25,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Removed
 
 - Support for Rubies before 3.0.
+- Passing a regular expression with :format is no longer supported. Use the
+  :with option instead.
 
 ## [2.1.1]
 
