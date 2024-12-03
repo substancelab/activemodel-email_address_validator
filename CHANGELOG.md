@@ -19,6 +19,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
+- Support for ActiveModel 8 (no changes).
 - Support for Ruby 3.3 and 3.4 (no changes).
 
 ### Removed
