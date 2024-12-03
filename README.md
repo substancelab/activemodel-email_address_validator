@@ -34,6 +34,17 @@ Or you could go beyound simple matching and validate that all email adresses bel
       :with => proc { |address| address.end_with?("@substancelab.com") }
     }
 
+You can even match against multiple rules, in which case all rules must pass:
+
+    validates :email, :email_address => {
+      :with => [
+        proc { |address| address.match(/.+@.+\..+/) },
+        proc { |address| !address.end_with?("@outlook.com") },
+      ]
+    }
+
+Do note that supplying your own rules means that the default email address validation isn't run - you're on your own, basically.
+
 ### Verify domain (still to be done - pull request, anybody?)
 
 This also checks that the domain actually has an MX record. Note this might take a while because of DNS lookups.
