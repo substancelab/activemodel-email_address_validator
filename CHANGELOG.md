@@ -15,7 +15,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 -
 
-## [2.2.0]
+## [3.0.0]
 
 ### Added
 
@@ -23,7 +23,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Removed
 
--
+- Support for Rubies before 3.0.
 
 ## [2.1.1]
 
