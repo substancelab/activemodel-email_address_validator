@@ -69,6 +69,16 @@ class EmailAddressValidatorTest < Minitest::Test
     reject("bob", subject)
   end
 
+  def test_rules_overwrite_default_rule
+    subject = build_model_with_validations(
+      email: {email_address: {
+        with: proc { |address| true }
+      }}
+    )
+
+    accept("anything", subject)
+  end
+
   private
 
   def accept(email_address, subject)
