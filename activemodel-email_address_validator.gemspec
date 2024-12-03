@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "activemodel", ">= 4.0", "< 8.0"
+  spec.add_dependency "activemodel", ">= 4.0", "< 9.0"
 
   spec.add_development_dependency "bundler", ">= 1.7"
   spec.add_development_dependency "rake", ">= 10.0"
